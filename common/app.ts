@@ -10,21 +10,12 @@ import checkHealthRouter from "./checkHealth"
 import serverOptions from "../config/Servers";
 const { port } = serverOptions;
 
-import jwtOptions from "../config/JWT"
-const { secret } = jwtOptions;
-
 import { Debugs } from "./loaders/Debug";
 import { Loggers } from "./loaders/Logger";
 
 const loggers = new Loggers()
 loggers.configuration();
 const Logger_Auth = log4js.getLogger('Auth');
-
-import { MongoController } from "../common/loaders/Mongo"
-const mongoController = new MongoController();
-mongoController.db.connection;
-// mongoController.db.set('useCreateIndex', true);
-mongoController.db.on('error', console.error.bind(console, "mongoDB connection error:"));
 
 const jwtKoa = require('koa-jwt');
 import { DataTransferObject } from "./controllers/DataTransferObject"
@@ -45,19 +36,6 @@ app.use(async (ctx, next) => {
         }
     });
 });
-
-// beforeSend:function(xhr){
-//     xhr.setRequestHeader("Authorization", 'Bearer Token')
-// }
-
-// Middleware below this line is only reached if JWT token is valid
-app.use(jwtKoa({ secret }).unless({
-    path: [
-        /\/api\/auth\/login/,
-        /\/api\/auth\/logoff/,
-        /\/api\/auth\/register/
-    ]
-}));
 
 import bodyParser from 'koa-bodyparser';
 app.use(bodyParser())
