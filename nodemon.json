@@ -5,7 +5,7 @@
         "node_modules/"
     ],
     "verbose": true,
-    "exec": "NODE_ENV=development && npx ts-node ./common/app.ts",
+    "exec": "NODE_ENV=development && npx ts-node ./server/app.ts",
     "events": {
         "restart": [
             "echo 'nodemon restart'"

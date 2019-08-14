@@ -37,6 +37,8 @@ app.use(async (ctx, next) => {
     });
 });
 
+// app.use('^\/manager/' )
+
 import bodyParser from 'koa-bodyparser';
 app.use(bodyParser())
 
