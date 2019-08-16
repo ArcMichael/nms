@@ -1,0 +1,16 @@
+{
+    "agent_log_level": "info",
+    "app_name": [
+        "stage-sephora-node-web-pc"
+    ],
+    "licenseKey": "",
+    "host": "redirect.networkbench.com",
+    "port": 443,
+    "ssl": true,
+    "proxy": "",
+    "proxy_host": "",
+    "proxy_port": "",
+    "proxy_user": "",
+    "proxy_pass": "",
+    "audit_mode": false
+}

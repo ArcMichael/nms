@@ -1,0 +1,16 @@
+{
+  "appenders": {
+    "cheese": {
+      "type": "file",
+      "filename": "logs/log4js.log"
+    }
+  },
+  "categories": {
+    "default": {
+      "appenders": [
+        "cheese"
+      ],
+      "level": "error"
+    }
+  }
+}
