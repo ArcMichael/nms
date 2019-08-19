@@ -78,9 +78,9 @@ app.listen(app.get("port"), error => {
   } else {
     if (console) {
       console.info(
-        `${app.get("run_env")}\n${app.get('soa_env')}==> �  Listening on port ${app.get(
+        `${app.get("run_env")}\n${app.get('soa_env')}\n==> �  Listening on port ${app.get(
           "port"
-        )} . Open up http://localhost:${app.get("port")}/ in your browser.`
+        )} .\nOpen up http://localhost:${app.get("port")}/ in your browser.`
       );
     }
   }
