@@ -1,57 +1,14 @@
 {
   "production":{
-    "restfulUrl":"10.157.32.32:81",
-    "exportUrl":"10.157.32.32:81",
-    "passport": "prod-sephora-backend-passport:8081",
-    "nodeUrl":"sephora-soa-backend-api-gateway:81",
-    "restfulEnv":"production",
-    "localhost":"www.sephora.cn",
-    "static":"https://ssl1.sephorastatic.cn",
-    "abtest":"http://www.sephora.cn",
-    "newtest":"https://www.sephora.cn",
-    "api":"api.sephora.cn"
+    "ENV":"production"
   },
-  "ebf":{
-    "restfulUrl":"ebf-sephora-soa-api-gateway",
-    "restfulEnv":"ebf",
-    "localhost":"www.sephora.cn",
-    "static":"https://ssl1.sephorastatic.cn",
-    "abtest":"http://www.sephora.cn",
-    "newtest":"https://www.sephora.cn",
-    "api":"api.sephora.cn"
+  "develop":{
+    "ENV":"develop"
   },
   "stage":{
-    "restfulUrl":"10.157.24.69:81",
-    "exportUrl":"10.157.24.69:81",
-    "passport": "stage-sephora-backend-passport:8081",
-    "nodeUrl":"stage-sephora-soa-api-gateway",
-    "restfulEnv":"stage",
-    "localhost":"stage.sephora.cn",
-    "static":"https://sslstage1.sephorastatic.cn",
-    "abtest":"http://stage.sephora.cn",
-    "newtest":"http://stage.sephora.cn",
-    "api":"stage-sephora-soa-backend-api-gateway:81"
+    "ENV":"stage"
   },
-  "qa1":{
-    "restfulUrl":"qa1-sephora-soa-api-gateway",
-    "restfulEnv":"qa1",
-    "localhost":"qa1.sephora.cn",
-    "static":"https://sslstage1.sephorastatic.cn",
-    "abtest":"http://test.sephora.cn",
-    "newtest":"http://test.sephora.cn",
-    "api":"testapi.sephora.cn"
-  },
-  "qa2":{
-    "restfulUrl":"10.157.46.125:81",
-    "exportUrl":"10.157.46.126:80",
-    "passport": "qa2-sephora-backend-passport:8081",
-    "nodeUrl":"qa2-sephora-soa-api-gateway",
-    "restfulEnv":"qa2",
-    "localhost":"qa2.sephora.cn",
-    "static":"https://sslstage1.sephorastatic.cn",
-    "abtest":"http://test.sephora.cn",
-    "newtest":"http://test.sephora.cn",
-    "api":"qa2-sephora-soa-backend-api-gateway:81",
-    "mock":"http://rap2api.taobao.org/app/mock/25013/"
+  "qa":{
+    "ENV":"qa"
   }
 }

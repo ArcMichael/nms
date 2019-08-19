@@ -2,7 +2,7 @@ clean:
 	rm -rf ./node_modules
 install:
 	yarn config set registry https://registry.npm.taobao.org && yarn
-develop:
-	NODE_ENV=development npm run hmr
-product:
-	NODE_ENV=production npm run product
+hmr: # SOA_ENV hmr || production
+	SOA_ENV=hmr RUN_ENV=production && npm run hmr
+production: ## RUN_ENV QA STAGE DEVELOP PRODUCTION
+	SOA_ENV=production RUN_ENV=production npm run product

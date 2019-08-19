@@ -33,10 +33,9 @@ app.set("soa_env", process.env.SOA_ENV || "hmr"); // 开发环境 production || 
 
 if (process.env.RUN_ENV) {
   switch (process.env.RUN_ENV) {
-    case "qa1":
-    case "qa2":
+    case "qa":
     case "stage":
-    case "ebf":
+    case "develop":
     case "production":
       app.set("run_env", process.env.RUN_ENV);
       break;
@@ -46,7 +45,7 @@ if (process.env.RUN_ENV) {
       break;
   }
 } else {
-  app.set("run_env", "stage");
+  app.set("run_env", "develop");
 }
 
 import { Development, Production } from "./scripts";
@@ -94,7 +93,7 @@ app.listen(app.get("port"), error => {
   } else {
     if (console) {
       console.info(
-        `${app.get("run_env")}==> �  Listening on port ${app.get(
+        `${app.get("run_env")}\n${app.get('soa_env')}==> �  Listening on port ${app.get(
           "port"
         )} . Open up http://localhost:${app.get("port")}/ in your browser.`
       );
