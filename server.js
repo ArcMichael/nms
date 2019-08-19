@@ -29,24 +29,9 @@ const publicDir = path.resolve(__dirname, "../public");
 // set RUN_ENV
 app.set("port", process.env.NODE_PORT || 4100); // defaultPort || 60018
 
-app.set("soa_env", process.env.SOA_ENV || "hmr"); // 开发环境 production || development || hmr
+app.set("soa_env", process.env.SOA_ENV || "production"); // 开发环境 production || development || hmr
 
-if (process.env.RUN_ENV) {
-  switch (process.env.RUN_ENV) {
-    case "qa":
-    case "stage":
-    case "develop":
-    case "production":
-      app.set("run_env", process.env.RUN_ENV);
-      break;
-    default:
-      app.set("run_env", "stage");
-      console.log(`ENV: Parameter ${process.env.RUN_ENV} over boundary.`);
-      break;
-  }
-} else {
-  app.set("run_env", "develop");
-}
+app.set('run_env', process.env.RUN_ENV || "production");
 
 import { Development, Production } from "./scripts";
 
