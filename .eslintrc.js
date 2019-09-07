@@ -6,8 +6,5 @@ module.exports = {
     parserOptions: {
         sourceType: "module"
     },
-    plugins: ["react","typescript"],
-    rules:{
-        "indent": ["error", 2]
-    }
+    plugins: ["typescript"]
 };
