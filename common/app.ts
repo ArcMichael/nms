@@ -1,4 +1,4 @@
-import http from 'http';
+import http from 'http'
 import log4js from "log4js";
 
 import Koa from "koa";
@@ -10,31 +10,21 @@ import checkHealthRouter from "./checkHealth"
 import serverOptions from "../config/Servers";
 const { port } = serverOptions;
 
-import jwtOptions from "../config/JWT"
-const { secret } = jwtOptions;
-
-import { Debugs } from "./loaders/Debug";
+// import { Debugs } from "./loaders/Debug";
 import { Loggers } from "./loaders/Logger";
 
 const loggers = new Loggers()
 loggers.configuration();
 const Logger_Auth = log4js.getLogger('Auth');
 
-import { MongoController } from "../common/loaders/Mongo"
-const mongoController = new MongoController();
-mongoController.db.connection;
-// mongoController.db.set('useCreateIndex', true);
-mongoController.db.on('error', console.error.bind(console, "mongoDB connection error:"));
-
-const jwtKoa = require('koa-jwt');
 import { DataTransferObject } from "./controllers/DataTransferObject"
 
 // console.log( process.env )
 
 // Custom 401 handling if you don't want to expose koa-jwt errors to users
-app.use(async (ctx, next) => {
+app.use(async (ctx:any, next:any) => {
     const dataTransferObject = new DataTransferObject(ctx)
-    return await next().catch(async (err) => {
+    return await next().catch(async (err:any) => {
         const err_message = err.originalError ? err.originalError.message : err.message;
         Logger_Auth.info(JSON.stringify(dataTransferObject.AuthorizedGhostInfo()))
         // Logger_Auth.info()
@@ -45,19 +35,6 @@ app.use(async (ctx, next) => {
         }
     });
 });
-
-// beforeSend:function(xhr){
-//     xhr.setRequestHeader("Authorization", 'Bearer Token')
-// }
-
-// Middleware below this line is only reached if JWT token is valid
-app.use(jwtKoa({ secret }).unless({
-    path: [
-        /\/api\/auth\/login/,
-        /\/api\/auth\/logoff/,
-        /\/api\/auth\/register/
-    ]
-}));
 
 import bodyParser from 'koa-bodyparser';
 app.use(bodyParser())
