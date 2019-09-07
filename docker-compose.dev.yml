@@ -8,5 +8,5 @@ services:
     ports:
       - "4000:4000"
     environment:
-      - "NODE_ENV=production"
+      - "NODE_ENV=development"
     container_name: next

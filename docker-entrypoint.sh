@@ -4,8 +4,8 @@ tee ./process.json <<-EOF
 {
   "apps": [
     {
-      "name": "nms",
-      "script": "./serve/server.bundle.js",
+      "name": "next",
+      "script": "./dist/app.js",
       "instances": 2,
       "exec_mode": "cluster",
       "instance_var": "INSTANCE_ID"
@@ -14,8 +14,6 @@ tee ./process.json <<-EOF
 }
 EOF
 
-echo "111"
-
-# npm run build && npx pm2 dump && npx pm2 start process.json
+npm run build && npx pm2 dump && npx pm2 start process.json
 
 tail -f /opt/frontend/dockerlogs/app.log
