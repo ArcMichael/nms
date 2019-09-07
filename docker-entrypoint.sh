@@ -1,3 +1,6 @@
+#!/bin/bash
+
+tee ./process.json <<-EOF
 {
   "apps": [
     {
@@ -9,3 +12,10 @@
     }
   ]
 }
+EOF
+
+echo "111"
+
+# npm run build && npx pm2 dump && npx pm2 start process.json
+
+tail -f /opt/frontend/dockerlogs/app.log

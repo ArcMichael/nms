@@ -1,5 +1,5 @@
 {
-  "name": "sephora-antd-admin",
+  "name": "next-antd-admin",
   "version": "2.1.0",
   "description": ">## A Big Update Is Coming",
   "main": "server.js",
@@ -56,7 +56,7 @@
     "express": "^4.15.3",
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.11.2",
-    "node-sass": "4.8.1",
+    "node-sass": "^4.12.0",
     "qr-image": "^3.2.0",
     "react": "16.8.3",
     "react-hot-loader": "^3.0.0-beta.7",
