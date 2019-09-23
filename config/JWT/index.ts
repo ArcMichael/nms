@@ -5,7 +5,7 @@ import env from "../Environment";
 
 let Environment = development;
 
-if( env === 'development' ){
+if (env === 'development') {
     Environment = development;
 }
 

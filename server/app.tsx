@@ -76,6 +76,9 @@ app
   .use(router.allowedMethods())
 
 const response = {
+  catch: (ctx: any) => {
+    ctx.body = `404`
+  },
   ssr: (ctx: any, path: any) => {
     console.log(path)
     let html = renderToString(
@@ -109,6 +112,7 @@ const response = {
 
 app.use(_.get('/nms/', response.ssr))
 app.use(_.get('/nms/*', response.ssr))
+app.use(_.all('*', response.catch))
 // app.use(_.get('/nms/:path', response.ssr))
 
 // app.use(async (ctx: any) => {
