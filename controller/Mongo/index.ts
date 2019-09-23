@@ -1,6 +1,6 @@
 class MongoController {
   constructor() {
-    this.options = options
+    // this.options = options
     // this.Mongoose = Mongoose
   }
 }

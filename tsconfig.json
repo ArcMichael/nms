@@ -58,5 +58,11 @@
     // "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
-  }
+  },
+  "exclude":[
+    "typings",
+    "tsconfig",
+    "dist",
+    "webpack"
+  ]
 }

@@ -1,1 +1,1 @@
-const path = reqiire('path')
+const path = reqiire('path');
