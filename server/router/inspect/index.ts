@@ -17,7 +17,7 @@ router.get('/system', async (ctx, next) => {
     return await dataTransferObject.success(Object.assign({},server));
 })
 
-router.all('/*', ctx => {
+router.all('*', ctx => {
     ctx.body = "default obligate api/inspect"
 })
 

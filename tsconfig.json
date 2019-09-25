@@ -62,7 +62,7 @@
   "exclude":[
     "typings",
     "tsconfig",
-    "dist",
+    "public",
     "webpack"
   ]
 }

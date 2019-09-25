@@ -1,8 +1,8 @@
 import Router from 'koa-router';
-import { HealthCheckDataTransferObject } from "../controllers/HealthCheckDataTransferObject";
+import { HealthCheckDataTransferObject } from "../../controllers/HealthCheckDataTransferObject";
 
 const router = new Router({
-    prefix: '/checkHealth'
+    prefix: '/checkhealth'
 });
 
 router.get('*', async (ctx, next) => {
@@ -10,7 +10,7 @@ router.get('*', async (ctx, next) => {
     return await healthCheckDataTransferObject.success("Health")
 })
 
-router.all('/*', ctx => {
+router.all('*', ctx => {
     ctx.body = "default obligate healthCheck"
 })
 

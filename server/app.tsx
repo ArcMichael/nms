@@ -1,12 +1,15 @@
 import http from 'http'
 import log4js from 'log4js'
+import path from 'path'
 
 import Koa from 'koa'
 import _ from 'koa-route'
+import serve from "koa-static";
+
 const app = new Koa()
 
 import router from './router'
-import checkHealthRouter from './checkHealth'
+// import checkHealthRouter from './router/checkHealth'
 
 import serverOptions from '../config/Servers'
 const { port } = serverOptions
@@ -35,56 +38,27 @@ const Logger_Auth = log4js.getLogger('Auth')
 // const jwtKoa = require('koa-jwt');
 import { DataTransferObject } from './controllers/DataTransferObject'
 
-// console.log( process.env )
-
-// Custom 401 handling if you don't want to expose koa-jwt errors to users
-// app.use(async (ctx, next) => {
-//     const dataTransferObject = new DataTransferObject(ctx);
-//     return await next().catch(async (err) => {
-//         const err_message = err.originalError ? err.originalError.message : err.message;
-//         Logger_Auth.info(JSON.stringify(dataTransferObject.AuthorizedGhostInfo()))
-//         // Logger_Auth.info()
-//         if (err.status === 401) {
-//             return await dataTransferObject.authorized(err_message)
-//         } else {
-//             throw err;
-//         }
-//     });
-// });
-
-// beforeSend:function(xhr){
-//     xhr.setRequestHeader("Authorization", 'Bearer Token')
-// }
-
-// Middleware below this line is only reached if JWT token is valid
-// app.use(jwtKoa({ secret }).unless({
-//     path: [
-//         /\/api\/auth\/login/,
-//         /\/api\/auth\/logoff/,
-//         /\/api\/auth\/register/
-//     ]
-// }));
-
 import bodyParser from 'koa-bodyparser'
 import { StaticRouter } from 'react-router'
-app.use(bodyParser())
 
-app
-  .use(checkHealthRouter.routes())
-  .use(checkHealthRouter.allowedMethods())
+app.use(bodyParser())
+  .use(serve(path.join(__dirname, "./public/")))
+  // .use(checkHealthRouter.routes())
+  // .use(checkHealthRouter.allowedMethods())
   .use(router.routes())
   .use(router.allowedMethods())
+// app.use(Koastatic(__dirname,"dist"))
 
 const response = {
   catch: (ctx: any) => {
     ctx.body = `404`
   },
   ssr: (ctx: any, path: any) => {
-    console.log(path)
+    console.log(ctx.req.url)
     let html = renderToString(
       <StaticRouter context={{}} location={ctx.req.url}>
         <Fragment>
-          <div className="container" style={{ marginTop: 70 }}>
+          <div className="container" style={{ marginTop: 30 }}>
             {routes}
           </div>
         </Fragment>
@@ -103,22 +77,18 @@ const response = {
     </head>
     <body>
         <div id="root">${html}</div>
-        
     </body>
     </html>
     `
   }
 }
 
-app.use(_.get('/nms/', response.ssr))
-app.use(_.get('/nms/*', response.ssr))
-app.use(_.all('*', response.catch))
-// app.use(_.get('/nms/:path', response.ssr))
+app
+// .use(_.all('*', response.ssr))
+// app
+  .use(_.all(['/nms/*'], response.ssr))
+  .use(_.all('*', response.catch));
 
-// app.use(async (ctx: any) => {
-//   const dataTransferObject = new DataTransferObject(ctx)
-//   return await dataTransferObject.authorized({})
-// })
 
 app.on('error', (err: any) => {
   console.error('server error', err)

@@ -1,22 +1,17 @@
 import Router from 'koa-router';
 // import redis from "./redis";
-// import rabbitmq from "./rabbitmq";
-import useragent from "./useragent";
-import auth from "./auth";
-import inspect from "./inspect";
+
+import RootApi from "./rootApi";
+// import RootPublic from "./rootPublic";
+import rootCheckHealth from "./rootCheckHealth";
 
 const router = new Router({
-    prefix: '/api'
+    prefix: '/nms'
 });
 
-// router.use(redis.routes(), redis.allowedMethods());
-// router.use(rabbitmq.routes(), rabbitmq.allowedMethods());
-router.use(useragent.routes(), useragent.allowedMethods());
-router.use(auth.routes(), auth.allowedMethods());
-router.use(inspect.routes(), inspect.allowedMethods());
-
-router.all('/*', ctx => {
-    ctx.body = "default obligate api"
-})
+router.use(RootApi.routes(), RootApi.allowedMethods())
+    .use(rootCheckHealth.routes(), rootCheckHealth.allowedMethods())
+    // .use(RootPublic.routes(), RootPublic.allowedMethods())
+    // .all('*', ctx => { ctx.body = "default obligate apis" })
 
 export default router
