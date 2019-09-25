@@ -86,7 +86,7 @@ const response = {
 app
 // .use(_.all('*', response.ssr))
 // app
-  .use(_.all(['/nms/*'], response.ssr))
+  .use(_.all('/nms/dashboard', response.ssr))
   .use(_.all('*', response.catch));
 
 
