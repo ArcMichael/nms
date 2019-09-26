@@ -108,8 +108,15 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 var Hello = /** @class */ (function (_super) {
     __extends(Hello, _super);
     function Hello() {
@@ -144,11 +151,21 @@ function getExclamationMarks(numChars) {
 
 "use strict";
 
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-var Hello_1 = __webpack_require__(/*! ./components/Hello */ "./client/components/Hello.tsx");
-ReactDOM.render(React.createElement(Hello_1.default, { name: "Typescript", enthusiasmLevel: 20 }), document.getElementById('root'));
+var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var ReactDOM = __importStar(__webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js"));
+var Hello_1 = __importDefault(__webpack_require__(/*! ./components/Hello */ "./client/components/Hello.tsx"));
+ReactDOM.render(React.createElement(Hello_1.default, { name: "Typescript", enthusiasmLevel: 10 }), document.getElementById('root'));
 
 
 /***/ }),
