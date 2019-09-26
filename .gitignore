@@ -1,9 +1,0 @@
-node_modules/
-
-build/*
-logs/*
-yarn.lock
-yarn-error.log
-yarn.lock
-dist/bundle.js
-package-lock.json
