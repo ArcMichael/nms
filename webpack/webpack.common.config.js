@@ -13,8 +13,7 @@ module.exports = {
   
     module: {
       rules: [
-        { test: /\.tsx?$/, loader: "ts-loader" },
-  
+        { test: /\.tsx?$/, exclude: /node_modules/, loader: "ts-loader" },
         { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
       ]
     },
