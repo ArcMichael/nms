@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Button } from 'antd';
 
 export interface Props {
   name: string;
@@ -28,6 +29,13 @@ export default class Hello extends React.Component<Props, {}>{
         <div>
           <button onClick={onDecrement}>-</button>
           <button onClick={onIncrement}>+</button>
+        </div>
+        <div>
+          <Button type="primary">Primary</Button>
+          <Button>Default</Button>
+          <Button type="dashed">Dashed</Button>
+          <Button type="danger">Danger</Button>
+          <Button type="link">Link</Button>
         </div>
       </div>
     )
