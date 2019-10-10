@@ -6,6 +6,8 @@ import Hello2 from "./containers/Hello2";
 import { connect } from "react-redux";
 import { Dispatch } from 'redux';
 
+import Home from "./containers/Home";
+
 interface Props {
     cName?: string;
     changeName?: any;
@@ -15,8 +17,8 @@ class Routes extends React.Component<Props>{
     render() {
         return (
             <Switch>
-                <Route path="/2" name="2" component={Hello2}></Route>
-                <Route component={Hello}></Route>
+                {/* <Route path="/2" name="2" component={Hello2}></Route> */}
+                <Route component={Home}></Route>
             </Switch>
         )
     }
@@ -25,3 +27,4 @@ class Routes extends React.Component<Props>{
 
 
 export default Routes;
+
