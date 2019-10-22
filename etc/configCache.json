@@ -1,8 +1,0 @@
-{
-  "extensions": [
-    "css",
-    "js"
-  ],
-  "index": false,
-  "maxAge": "12h"
-}
