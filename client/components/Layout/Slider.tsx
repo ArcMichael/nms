@@ -1,25 +1,35 @@
 import * as React from "react";
-import { Switch } from 'react-router';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Switch, RouteComponentProps } from 'react-router';
+import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { Dispatch } from 'redux';
 
-import Home from "./containers/Home";
+import { Layout, Menu, Icon, message, notification } from 'antd';
 
-import { Layout, Menu, Icon } from 'antd';
-const { Header, Sider, Content } = Layout;
-const { SubMenu } = Menu;
+type PathParamsType = {
+    param1: string;
+}
 
-import "./routers.css";
+// Your component own properties
+type Props = RouteComponentProps<PathParamsType> & {
+    someString?: string;
+}
 
-interface Props {
+interface States {
 
 }
-class Routes extends React.Component<Props>{
+class Slider extends React.Component<Props, States>{
 
     constructor(props: Props) {
-        super(props)
+        super(props);
     }
+
+    componentDidMount() {
+    }
+
+    // constructor(props: Props) {
+    //     super(props)
+    // }
 
     state = {
         collapsed: false
@@ -32,16 +42,21 @@ class Routes extends React.Component<Props>{
     }
 
     render() {
+
+        const { location } = this.props;
+        const { pathname } = location;
+
+
+
         return (
-            <Layout id="components-layout-trigger">
-                <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
+            <Layout.Sider trigger={null} collapsible collapsed={this.state.collapsed}>
                     <div className="logo" />
                     <Menu theme="dark"
                         mode="inline"
                         defaultSelectedKeys={['1']}
                         defaultOpenKeys={['sub1']}
                     >
-                        <SubMenu
+                        <Menu.SubMenu
                             key="sub1"
                             title={
                                 <span>
@@ -50,16 +65,16 @@ class Routes extends React.Component<Props>{
                                 </span>
                             }
                         >
-                            <SubMenu key="sub1.1" title="Submenu">
+                            <Menu.SubMenu key="sub1.1" title="Submenu">
                                 <Menu.Item key="1">Option 1</Menu.Item>
                                 <Menu.Item key="2">Option 2</Menu.Item>
-                            </SubMenu>
-                            <SubMenu key="sub1.2" title="Submenu">
+                            </Menu.SubMenu>
+                            <Menu.SubMenu key="sub1.2" title="Submenu">
                                 <Menu.Item key="3">Option 3</Menu.Item>
                                 <Menu.Item key="4">Option 4</Menu.Item>
-                            </SubMenu>
-                        </SubMenu>
-                        <SubMenu
+                            </Menu.SubMenu>
+                        </Menu.SubMenu>
+                        <Menu.SubMenu
                             key="sub2"
                             title={
                                 <span>
@@ -70,12 +85,12 @@ class Routes extends React.Component<Props>{
                         >
                             <Menu.Item key="5">Option 5</Menu.Item>
                             <Menu.Item key="6">Option 6</Menu.Item>
-                            <SubMenu key="sub3" title="Submenu">
+                            <Menu.SubMenu key="sub3" title="Submenu">
                                 <Menu.Item key="7">Option 7</Menu.Item>
                                 <Menu.Item key="8">Option 8</Menu.Item>
-                            </SubMenu>
-                        </SubMenu>
-                        <SubMenu
+                            </Menu.SubMenu>
+                        </Menu.SubMenu>
+                        <Menu.SubMenu
                             key="sub4"
                             title={
                                 <span>
@@ -88,27 +103,14 @@ class Routes extends React.Component<Props>{
                             <Menu.Item key="10">Option 10</Menu.Item>
                             <Menu.Item key="11">Option 11</Menu.Item>
                             <Menu.Item key="12">Option 12</Menu.Item>
-                        </SubMenu>
+                        </Menu.SubMenu>
                     </Menu>
-                </Sider>
-                <Layout>
-                    <Header style={{ background: '#fff', padding: 0 }}>
-                        <Icon
-                            className="trigger"
-                            type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-                            onClick={this.toggle}
-                        />
-                    </Header>
-                    <Switch>
-                        <Route component={Home} ></Route>
-                    </Switch>
-                </Layout>
-            </Layout>
+                </Layout.Sider>
         )
     }
 }
 
 
 
-export default Routes;
+export default withRouter(Slider)
 

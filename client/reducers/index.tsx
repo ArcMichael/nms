@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
-import { enthusiasm } from "./demo";
+import { demo } from "./demo";
+import { layout } from "./layout";
 
 const rootReducer = combineReducers({
-    demo: enthusiasm
+    demo,
+    layout
 })
 
 export default rootReducer;

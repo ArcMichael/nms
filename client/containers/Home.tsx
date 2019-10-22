@@ -1,6 +1,10 @@
 import * as React from 'react';
+
 import * as actions from '../actions/';
 import { StoreState } from '../types/index';
+
+import { RouteComponentProps } from 'react-router';
+import { withRouter } from "react-router-dom";
 import { connect, Dispatch } from 'react-redux';
 
 import { Layout, Menu, Icon } from 'antd';
@@ -8,15 +12,14 @@ const { Header, Sider, Content } = Layout;
 
 import './Home.css';
 
-export interface Props {
-    name: string;
+type PathParamsType = {
+}
+
+// Your component own properties
+type Props = RouteComponentProps<PathParamsType> & {
     enthusiasmLevel?: number;
     onIncrement?: () => void;
     onDecrement?: () => void;
-  }
-
-interface State {
-
 }
 
 export function mapStateToProps({ demo: { enthusiasmLevel, languageName } }: StoreState) {
@@ -37,13 +40,13 @@ export function mergeProps(stateProps: Object, dispatchProps: Object, ownProps: 
     return Object.assign({}, ownProps, stateProps, dispatchProps)
 }
 
-class Home extends React.Component<Props, State>{
+class Home extends React.Component<Props, {}>{
     constructor(props: Props) {
         super(props);
     }
     render() {
 
-        const { name, enthusiasmLevel = 1, onIncrement, onDecrement } = this.props;
+        const { enthusiasmLevel = 1, onIncrement, onDecrement } = this.props;
 
         return (
             <Content
@@ -72,8 +75,8 @@ function getExclamationMarks(numChars: number) {
     return Array(numChars + 1).join('!');
 }
 
-export default connect(
+export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps,
     mergeProps
-)(Home);
+)(Home));
