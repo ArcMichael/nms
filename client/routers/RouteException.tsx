@@ -18,7 +18,7 @@ function RouterException() {
     let { path }: IuseRouteMatch = useRouteMatch() || {};
 
     return (
-        <div>
+        <React.Fragment>
             <Switch>
                 <Route exact path={path}>
                     <Exception404 />
@@ -34,7 +34,7 @@ function RouterException() {
                 </Route>
                 <Redirect from="*" to="/"></Redirect>
             </Switch>
-        </div>
+        </React.Fragment>
     );
 }
 

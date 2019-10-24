@@ -18,8 +18,6 @@ function Home() {
         </div>
     );
 }
-
-
 class Routes extends React.Component<Props, States>{
 
     constructor(props: Props) {

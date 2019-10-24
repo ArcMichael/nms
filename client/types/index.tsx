@@ -9,11 +9,11 @@ export interface demo {
 //     slider: slider;
 // }
 
-export interface Slider{
+export interface Slider {
     collapsed: boolean;
 }
 
-export interface TLayout{
+export interface TLayout {
     slider: Slider
 }
 
