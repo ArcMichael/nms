@@ -1,0 +1,58 @@
+.login {
+     :global {
+        .ant-tabs .ant-tabs-bar {
+            margin-bottom: 24px;
+            text-align: center;
+            border-bottom: 0;
+        }
+        .ant-form-item {
+            margin: 0 2px 24px;
+        }
+    }
+    .getCaptcha {
+        display: block;
+        width: 100%;
+    }
+    .icon {
+        margin-left: 16px;
+        color: rgba(0, 0, 0, 0.2);
+        font-size: 24px;
+        vertical-align: middle;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+    .other {
+        margin-top: 24px;
+        line-height: 22px;
+        text-align: left;
+        .register {
+            float: right;
+        }
+    }
+    .prefixIcon {}
+    .submit {
+        width: 100%;
+        margin-top: 24px;
+    }
+    .login-form {
+        max-width: 300px;
+    }
+    .login-form-forgot {
+        float: right;
+    }
+    .login-form-button {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .login {
+        .ant-form-item {
+            margin: 0 auto;
+            width: 95%;
+        }
+        .login-form {
+            display: initial;
+        }
+    }
+}

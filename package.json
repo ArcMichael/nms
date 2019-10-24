@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/ArcMichael/nms#readme",
   "devDependencies": {
+    "@types/classnames": "^2.2.9",
     "@types/dotenv": "^6.1.1",
     "@types/koa": "^2.0.50",
     "@types/koa-json": "^2.0.18",
@@ -44,6 +45,7 @@
     "@typescript-eslint/eslint-plugin": "^2.3.1",
     "@typescript-eslint/parser": "^2.3.1",
     "antd": "^3.23.6",
+    "classnames": "^2.2.6",
     "cross-env": "^6.0.0",
     "css-loader": "^3.2.0",
     "dotenv": "^8.1.0",
