@@ -23,27 +23,28 @@ export function decrementEnthusiasm(): DecrementEnthusiasm {
 }
 
 /**
- * Layout Slider Display
+ * Layout Slider
  */
+export interface LayoutSliderCollapsedShow {
+    type: constants.LAYOUT_SLIDER_COLLAPSED_SHOW;
+}
 
-export interface LayoutSliderHide {
-    type: constants.LAYOUT_SLIDER_HIDE;
- }
+export interface LayoutSliderCollapsedHide {
+    type: constants.LAYOUT_SLIDER_COLLAPSED_HIDE;
+}
 
- export interface LayoutSliderShow {
-    type: constants.LAYOUT_SLIDER_SHOW;
- }
+export type LayoutSliderCollapsedAction = LayoutSliderCollapsedShow | LayoutSliderCollapsedHide;
 
- export type LayoutSliderAction = LayoutSliderHide | LayoutSliderShow;
+export function layoutSliderCollapsedShow(): LayoutSliderCollapsedShow {
+    console.log('LayoutSliderCollapsedShow')
+    return{
+        type: constants.LAYOUT_SLIDER_COLLAPSED_SHOW
+    }
+}
 
- export function layoutSliderHide(): LayoutSliderHide {
-     return {
-         type: constants.LAYOUT_SLIDER_HIDE
-     }
- }
-
- export function layoutSliderShow(): LayoutSliderShow {
-     return {
-         type: constants.LAYOUT_SLIDER_SHOW
-     }
- }
+export function layoutSliderCollapsedHide(): LayoutSliderCollapsedHide {
+    console.log('LayoutSliderCollapsedHide')
+    return {
+        type: constants.LAYOUT_SLIDER_COLLAPSED_HIDE
+    }
+}

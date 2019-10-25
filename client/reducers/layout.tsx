@@ -1,27 +1,19 @@
-import { LayoutSliderAction } from "../actions";
-// import { layout } from "../types";
-import { LAYOUT_SLIDER_HIDE, LAYOUT_SLIDER_SHOW } from "../constants";
+import { LayoutSliderCollapsedAction } from '../actions';
+import { layout } from '../types/index';
+import { LAYOUT_SLIDER_COLLAPSED_SHOW, LAYOUT_SLIDER_COLLAPSED_HIDE } from '../constants/index';
 
-export interface Slider{
-    collapsed: boolean;
-}
-
-export interface StateLayout{
-    slider: Slider
-}
-
-const initStateLayout: StateLayout = {
-    slider:  {
-        collapsed: true
+const initState = {
+    layout: {
+        collapsed: false
     }
 }
 
-export function layout(state = initStateLayout, actions: LayoutSliderAction): StateLayout {
-    switch (actions.type) {
-        case LAYOUT_SLIDER_HIDE:
-            return { ...state, slider: { collapsed: false } }
-        case LAYOUT_SLIDER_SHOW:
-            return { ...state, slider: { collapsed: true } }
+export function layout(state: layout = initState.layout, action: LayoutSliderCollapsedAction): layout {
+    switch (action.type) {
+        case LAYOUT_SLIDER_COLLAPSED_SHOW:
+            return { ...state, collapsed: true }
+        case LAYOUT_SLIDER_COLLAPSED_HIDE:
+            return { ...state, collapsed: false }
     }
     return state;
 }

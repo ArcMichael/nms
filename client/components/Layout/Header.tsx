@@ -1,71 +1,74 @@
 import * as React from "react";
 
 import * as actions from '../../actions/';
-import { StoreState } from "../../types";
+import { StoreState, demo } from "../../types";
 import { mergeProps } from "../../store/props";
 
 import { RouteComponentProps } from 'react-router';
 import { withRouter } from "react-router-dom";
 import { connect, Dispatch } from 'react-redux';
 
-import { Layout, Icon } from 'antd';
+import { Layout, Icon, Collapse } from 'antd';
 
 import "./Header.scss";
 
-type PathParamsType = {
-}
+type PathParamsType = {}
+
+type States = {}
+
+// type Collapsed = boolean | undefined;
 
 // Your component own properties
 type Props = RouteComponentProps<PathParamsType> & {
-    layoutSliderHide?: () => void;
-    layoutSliderShow?: () => void;
+    enthusiasmLevel?: number;
+    onIncrement?: () => void;
+    onDecrement?: () => void;
 }
 
-export function mapStateToProps({  }: StoreState){
+export function mapStateToProps({ demo: { enthusiasmLevel, languageName } }: StoreState) {
     return {
-        
+        enthusiasmLevel,
+        languageName
     }
 }
 
-export function mapDispatchToProps(dispatch: Dispatch<any>) {
+export function mapDispatchToProps(dispatch: Dispatch<actions.EnthusiasmAction>) {
     return {
+        onIncrement: () => dispatch(actions.incrementEnthusiasm()),
+        onDecrement: () => dispatch(actions.decrementEnthusiasm()),
     }
 }
 
-class Header extends React.Component<Props, {}>{
+class Header extends React.Component<Props, States>{
 
     constructor(props: Props) {
         super(props);
-        // this.toggle = this.toggle.bind(this);
     }
 
     componentDidMount() {
         // this.props.onlayoutSliderHide();
     }
 
-    state = {
-        collapsed: false
-    }
-
     toggle = () => {
-        console.log(this.props)
-        // let { layout: { slider }, layoutSliderShow } = this.props;
+
+        const { enthusiasmLevel = 1, onIncrement, onDecrement } = this.props;
+
+        onIncrement && onIncrement();
+
     }
 
     render() {
 
-        const { location } = this.props;
-        const { pathname } = location
-
-        console.log(this.props)
+        const { enthusiasmLevel = 1, onIncrement, onDecrement } = this.props;
 
         return (
             <Layout.Header style={{ background: '#fff', padding: 0 }}>
                 <Icon
                     className="trigger"
-                    type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-                    onClick={ this.toggle }
+                    type={ enthusiasmLevel ? 'menu-unfold' : 'menu-fold'}
+                    onClick={this.toggle }
                 />
+                { enthusiasmLevel }
             </Layout.Header>
         )
     }

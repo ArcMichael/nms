@@ -3,12 +3,13 @@ import { Switch, RouteComponentProps } from 'react-router';
 import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
 import { connect, Dispatch } from "react-redux";
 import { StoreState } from "../../types";
+import { mergeProps } from "../../store/props";
 
 import Slider from "../Layout/Slider"
 import Header from "../Layout/Header";
 import Content from "../Layout/Content";
 import Breadcrumb from "../Layout/Breadcrumb";
-import { Layout } from "antd";
+import { Layout, Collapse } from "antd";
 import Footer from "../Layout/Footer";
 
 type PathParamsType = {}
@@ -28,10 +29,6 @@ export function mapStateToProps({ }: StoreState) {
 
 export function mapDispatchToProps(dispatch: Dispatch<any>) {
     return {}
-}
-
-export function mergeProps(stateProps: Object, dispatchProps: Object, ownProps: Object) {
-    return Object.assign({}, ownProps, stateProps, dispatchProps)
 }
 
 class Wrapper extends React.Component<Props, Status>{
