@@ -2,12 +2,15 @@ import * as React from "react";
 
 import * as actions from '../../actions/';
 import { StoreState } from "../../types";
+import { mergeProps } from "../../store/props";
 
 import { RouteComponentProps } from 'react-router';
 import { withRouter } from "react-router-dom";
 import { connect, Dispatch } from 'react-redux';
 
 import { Layout, Icon } from 'antd';
+
+import "./Header.scss";
 
 type PathParamsType = {
 }
@@ -18,21 +21,15 @@ type Props = RouteComponentProps<PathParamsType> & {
     layoutSliderShow?: () => void;
 }
 
-export function mapStateToProps({ layout }: StoreState){
+export function mapStateToProps({  }: StoreState){
     return {
-        layout
+        
     }
 }
 
-export function mapDispatchToProps(dispatch: Dispatch<actions.LayoutSliderAction>) {
+export function mapDispatchToProps(dispatch: Dispatch<any>) {
     return {
-        onlayoutSliderHide: () => dispatch(actions.layoutSliderHide()),
-        onlayoutSliderShow: () => dispatch(actions.layoutSliderShow()),
     }
-}
-
-export function mergeProps(stateProps: Object, dispatchProps: Object, ownProps: Object) {
-    return Object.assign({}, ownProps, stateProps, dispatchProps)
 }
 
 class Header extends React.Component<Props, {}>{

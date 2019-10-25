@@ -1,6 +1,8 @@
 import * as React from "react";
 import { Switch, RouteComponentProps } from 'react-router';
 import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
+import { StoreState } from '../../types/index';
+import { mergeProps } from '../../store/props'
 import { connect } from "react-redux";
 import { Dispatch } from 'redux';
 
@@ -12,44 +14,52 @@ type PathParamsType = {
 
 // Your component own properties
 type Props = RouteComponentProps<PathParamsType> & {
-    someString?: string;
+    collapsed?: boolean;
 }
 
 interface States {
 
 }
+
+export function mapStateToProps({  }: StoreState) {
+    return {
+    }
+}
+
+export function mapDispatchToProps(dispatch: Dispatch<any>) {
+    return {
+        
+    }
+}
+
 class Slider extends React.Component<Props, States>{
 
     constructor(props: Props) {
         super(props);
     }
 
-    componentDidMount() {
-    }
+    componentDidMount() {}
 
     // constructor(props: Props) {
     //     super(props)
     // }
 
-    state = {
-        collapsed: false
-    }
+    // state = {
+    //     collapsed: true
+    // }
 
-    toggle = () => {
-        this.setState({
-            collapsed: !this.state.collapsed
-        })
-    }
+    // toggle = () => {
+    //     this.setState({
+    //         collapsed: !this.state.collapsed
+    //     })
+    // }
 
     render() {
 
-        const { location } = this.props;
-        const { pathname } = location;
-
-
+        let { collapsed } = this.props;
 
         return (
-            <Layout.Sider trigger={null} collapsible collapsed={this.state.collapsed}>
+            <Layout.Sider trigger={null} collapsible collapsed={ collapsed }>
                     <div className="logo" />
                     <Menu theme="dark"
                         mode="inline"
@@ -112,5 +122,9 @@ class Slider extends React.Component<Props, States>{
 
 
 
-export default withRouter(Slider)
+export default withRouter(connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    mergeProps
+)(Slider));
 

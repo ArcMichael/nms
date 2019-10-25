@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link, withRouter, Redirect, useParams, 
 
 import RouteException from "./RouteException";
 import RouteUser from "./RouteUser";
+import RouteList from "./RouteList";
 
 import "./routers.scss";
 
@@ -35,6 +36,9 @@ class Routes extends React.Component<Props, States>{
                 </Route>
                 <Route path="/exception">
                     <RouteException />
+                </Route>
+                <Route path="/list">
+                    <RouteList />
                 </Route>
                 <Redirect from="*" to="/"></Redirect>
             </Switch>

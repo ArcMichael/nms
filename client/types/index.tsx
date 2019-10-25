@@ -19,5 +19,4 @@ export interface TLayout {
 
 export interface StoreState {
     demo: demo;
-    layout: TLayout;
 }
