@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import * as actions from '../../actions/';
-import { StoreState, demo } from "../../types";
+import { StoreState } from "../../types";
 import { mergeProps } from "../../store/props";
 
 import { RouteComponentProps } from 'react-router';
@@ -13,29 +13,26 @@ import { Layout, Icon, Collapse } from 'antd';
 import "./Header.scss";
 
 type PathParamsType = {}
-
 type States = {}
-
-// type Collapsed = boolean | undefined;
 
 // Your component own properties
 type Props = RouteComponentProps<PathParamsType> & {
+    sliderBar?: boolean;
     enthusiasmLevel?: number;
-    onIncrement?: () => void;
-    onDecrement?: () => void;
+    sliderbarShow?: () => void;
+    sliderbarHide?: () => void;
 }
 
-export function mapStateToProps({ demo: { enthusiasmLevel, languageName } }: StoreState) {
+export function mapStateToProps({ layout: { sliderBar } }: StoreState) {
     return {
-        enthusiasmLevel,
-        languageName
+        sliderBar
     }
 }
 
-export function mapDispatchToProps(dispatch: Dispatch<actions.EnthusiasmAction>) {
+export function mapDispatchToProps(dispatch: Dispatch<actions.SliderBarAction>) {
     return {
-        onIncrement: () => dispatch(actions.incrementEnthusiasm()),
-        onDecrement: () => dispatch(actions.decrementEnthusiasm()),
+        sliderbarShow: () => dispatch(actions.sliderbarShow()),
+        sliderbarHide: () => dispatch(actions.sliderbarHide()),
     }
 }
 
@@ -45,30 +42,28 @@ class Header extends React.Component<Props, States>{
         super(props);
     }
 
-    componentDidMount() {
-        // this.props.onlayoutSliderHide();
-    }
-
     toggle = () => {
-
-        const { enthusiasmLevel = 1, onIncrement, onDecrement } = this.props;
-
-        onIncrement && onIncrement();
+        const { sliderbarShow, sliderbarHide, sliderBar } = this.props;
+        if( sliderBar === false ){
+            return sliderbarShow && sliderbarShow();
+        }
+        if( sliderBar === true ){
+            return sliderbarHide && sliderbarHide();
+        }
 
     }
 
     render() {
 
-        const { enthusiasmLevel = 1, onIncrement, onDecrement } = this.props;
+        const { sliderBar } = this.props;
 
         return (
             <Layout.Header style={{ background: '#fff', padding: 0 }}>
                 <Icon
                     className="trigger"
-                    type={ enthusiasmLevel ? 'menu-unfold' : 'menu-fold'}
+                    type={ sliderBar ? 'menu-unfold' : 'menu-fold'}
                     onClick={this.toggle }
                 />
-                { enthusiasmLevel }
             </Layout.Header>
         )
     }

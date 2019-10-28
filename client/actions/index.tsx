@@ -25,26 +25,26 @@ export function decrementEnthusiasm(): DecrementEnthusiasm {
 /**
  * Layout Slider
  */
-export interface LayoutSliderCollapsedShow {
-    type: constants.LAYOUT_SLIDER_COLLAPSED_SHOW;
+export interface SliderBarShow {
+    type: constants.SLIDERBAR_SHOW;
 }
 
-export interface LayoutSliderCollapsedHide {
-    type: constants.LAYOUT_SLIDER_COLLAPSED_HIDE;
+export interface SliderBarHide {
+    type: constants.SLIDERBAR_HIDE;
 }
 
-export type LayoutSliderCollapsedAction = LayoutSliderCollapsedShow | LayoutSliderCollapsedHide;
+export type SliderBarAction = SliderBarShow | SliderBarHide;
 
-export function layoutSliderCollapsedShow(): LayoutSliderCollapsedShow {
-    console.log('LayoutSliderCollapsedShow')
+export function sliderbarShow(): SliderBarShow {
+    console.log('SliderBarShow')
     return{
-        type: constants.LAYOUT_SLIDER_COLLAPSED_SHOW
+        type: constants.SLIDERBAR_SHOW
     }
 }
 
-export function layoutSliderCollapsedHide(): LayoutSliderCollapsedHide {
-    console.log('LayoutSliderCollapsedHide')
+export function sliderbarHide(): SliderBarHide {
+    console.log('SliderBarHide')
     return {
-        type: constants.LAYOUT_SLIDER_COLLAPSED_HIDE
+        type: constants.SLIDERBAR_HIDE
     }
 }

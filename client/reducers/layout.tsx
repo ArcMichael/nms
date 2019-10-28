@@ -1,19 +1,19 @@
-import { LayoutSliderCollapsedAction } from '../actions';
+import { SliderBarAction } from '../actions';
 import { layout } from '../types/index';
-import { LAYOUT_SLIDER_COLLAPSED_SHOW, LAYOUT_SLIDER_COLLAPSED_HIDE } from '../constants/index';
+import { SLIDERBAR_HIDE, SLIDERBAR_SHOW } from '../constants/index';
 
-const initState = {
+const initLayout = {
     layout: {
-        collapsed: false
+        sliderBar: false
     }
 }
 
-export function layout(state: layout = initState.layout, action: LayoutSliderCollapsedAction): layout {
+export function layout(state: layout = initLayout.layout, action: SliderBarAction): layout {
     switch (action.type) {
-        case LAYOUT_SLIDER_COLLAPSED_SHOW:
-            return { ...state, collapsed: true }
-        case LAYOUT_SLIDER_COLLAPSED_HIDE:
-            return { ...state, collapsed: false }
+        case SLIDERBAR_SHOW:
+            return { ...state, sliderBar: true };
+        case SLIDERBAR_HIDE:
+            return { ...state, sliderBar: false };
     }
     return state;
 }

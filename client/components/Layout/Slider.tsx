@@ -8,21 +8,18 @@ import { Dispatch } from 'redux';
 
 import { Layout, Menu, Icon, message, notification } from 'antd';
 
-type PathParamsType = {
-    param1: string;
-}
+type PathParamsType = {}
 
 // Your component own properties
 type Props = RouteComponentProps<PathParamsType> & {
-    collapsed?: boolean;
+    sliderBar?: boolean;
 }
 
-interface States {
+interface States {}
 
-}
-
-export function mapStateToProps({  }: StoreState) {
+export function mapStateToProps({ layout: { sliderBar } }: StoreState) {
     return {
+        sliderBar
     }
 }
 
@@ -40,26 +37,12 @@ class Slider extends React.Component<Props, States>{
 
     componentDidMount() {}
 
-    // constructor(props: Props) {
-    //     super(props)
-    // }
-
-    // state = {
-    //     collapsed: true
-    // }
-
-    // toggle = () => {
-    //     this.setState({
-    //         collapsed: !this.state.collapsed
-    //     })
-    // }
-
     render() {
 
-        let { collapsed } = this.props;
+        const { sliderBar } = this.props;
 
         return (
-            <Layout.Sider trigger={null} collapsible collapsed={ collapsed }>
+            <Layout.Sider trigger={null} collapsible collapsed={ sliderBar }>
                     <div className="logo" />
                     <Menu theme="dark"
                         mode="inline"
@@ -119,8 +102,6 @@ class Slider extends React.Component<Props, States>{
         )
     }
 }
-
-
 
 export default withRouter(connect(
     mapStateToProps,
