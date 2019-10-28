@@ -6,6 +6,7 @@ import RouteException from "./RouteException";
 import RouteUser from "./RouteUser";
 import RouteList from "./RouteList";
 import RouteDashboard from "./RouteDashboard";
+import RouteConvert from "./RouteConvert";
 
 import "./routers.scss";
 
@@ -34,6 +35,9 @@ class Routes extends React.Component<Props, States>{
                 </Route> */}
                 <Route path="/dashboard">
                     <RouteDashboard />
+                </Route>
+                <Route path="/convert">
+                    <RouteConvert />
                 </Route>
                 <Route path="/user">
                     <RouteUser />

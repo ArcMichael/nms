@@ -2,9 +2,9 @@ import * as React from "react";
 import { Switch, RouteComponentProps } from 'react-router';
 import { BrowserRouter as Router, Route, Link, withRouter, Redirect, useParams, useRouteMatch } from "react-router-dom";
 
-import Exception403 from "../containers/Exception403";
-import Exception404 from "../containers/Exception404";
-import Exception500 from "../containers/Exception500";
+import Exception403 from "../containers/Exception/Exception403"
+import Exception404 from "../containers/Exception/Exception404";
+import Exception500 from "../containers/Exception/Exception500";
 
 import { TUseRouteMatch } from "../types/Route";
 

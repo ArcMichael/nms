@@ -4,9 +4,10 @@ import { BrowserRouter as Router, Route, Link, withRouter, Redirect, useParams, 
 
 import { TUseRouteMatch } from "../types/Route";
 
-import Dashboard from "../containers/Dashboard/index";
+import Convert from "../containers/Convert/index";
+import ConvertImage from "../containers/Convert/ConvertImage";
 
-function RouterDashboard() {
+function RouterConvert() {
 
     let { path }: TUseRouteMatch = useRouteMatch() || {};
 
@@ -14,7 +15,10 @@ function RouterDashboard() {
         <React.Fragment>
             <Switch>
                 <Route exact path={path}>
-                    <Dashboard />
+                    <Convert />
+                </Route>
+                <Route path={`${path}/images`}>
+                    <ConvertImage />
                 </Route>
                 <Redirect from="*" to="/"></Redirect>
             </Switch>
@@ -22,4 +26,4 @@ function RouterDashboard() {
     );
 }
 
-export default withRouter(RouterDashboard);
+export default withRouter(RouterConvert);
