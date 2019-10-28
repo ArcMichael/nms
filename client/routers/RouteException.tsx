@@ -6,16 +6,11 @@ import Exception403 from "../containers/Exception403";
 import Exception404 from "../containers/Exception404";
 import Exception500 from "../containers/Exception500";
 
-type IuseRouteMatch = {
-    isExact?: boolean;
-    params?: object;
-    path?: string;
-    url?: string;
-}
+import { TUseRouteMatch } from "../types/Route";
 
 function RouterException() {
 
-    let { path }: IuseRouteMatch = useRouteMatch() || {};
+    let { path }: TUseRouteMatch = useRouteMatch() || {};
 
     return (
         <React.Fragment>

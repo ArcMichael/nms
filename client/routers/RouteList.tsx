@@ -4,16 +4,11 @@ import { BrowserRouter as Router, Route, Link, withRouter, Redirect, useParams, 
 
 import TableList from "../containers/List/TableList";
 
-type IuseRouteMatch = {
-    isExact?: boolean;
-    params?: object;
-    path?: string;
-    url?: string;
-}
+import { TUseRouteMatch } from "../types/Route";
 
 function RouteList() {
 
-    let { path }: IuseRouteMatch = useRouteMatch() || {};
+    let { path }: TUseRouteMatch = useRouteMatch() || {};
 
     return (
         <React.Fragment>

@@ -20,6 +20,7 @@ type Props = RouteComponentProps<PathParamsType> & {
     WrapperFooter: boolean;
     WrapperSlider: boolean;
     WrapperLayout?: boolean;
+    children?: any;
 }
 type Status = {}
 
@@ -38,23 +39,25 @@ class Wrapper extends React.Component<Props, Status>{
 
     render() {
 
-        let { WrapperHeader, WrapperContext, WrapperFooter, WrapperSlider, WrapperBreadcrumb } = this.props;
+        let { WrapperHeader, WrapperContext, WrapperFooter, WrapperSlider, WrapperBreadcrumb, children } = this.props;
 
         return (
             <Layout>
-                { WrapperSlider ? <Slider /> : null}
+                {WrapperSlider ? <Slider /> : null}
                 <Layout>
-                    { WrapperHeader ? <Header /> : null }
-                    { WrapperBreadcrumb? <Breadcrumb />: null }  
-                    { WrapperContext ? <Content />: null }
-                    { WrapperFooter ? <Footer />: null }
+                    {WrapperHeader ? <Header /> : null}
+                    {WrapperBreadcrumb ? <Breadcrumb /> : null}
+                    {WrapperContext ? <Content
+                        children={children}
+                    /> : null}
+                    {WrapperFooter ? <Footer /> : null}
                 </Layout>
             </Layout>
         )
     }
 }
 
-export default withRouter(connect(  
+export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps,
     mergeProps

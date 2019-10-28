@@ -2,24 +2,25 @@ import * as React from "react";
 import { Switch, RouteComponentProps } from 'react-router';
 import { BrowserRouter as Router, Route, Link, withRouter, Redirect, useParams, useRouteMatch } from "react-router-dom";
 
-import Login from "../containers/User/Login";
-
 import { TUseRouteMatch } from "../types/Route";
 
-function RouteUser() {
+import Dashboard from "../containers/Dashboard/index";
+
+function RouterDashboard() {
 
     let { path }: TUseRouteMatch = useRouteMatch() || {};
 
     return (
-        <div>
+        <React.Fragment>
             <Switch>
-                <Route path={`${path}/login`}>
-                    <Login />
+                <Route exact path={path}>
+                    <Dashboard />
                 </Route>
-                <Redirect from="*" to={`${path}/login`}></Redirect>
+               
+                <Redirect from="*" to="/"></Redirect>
             </Switch>
-        </div>
+        </React.Fragment>
     );
 }
 
-export default withRouter(RouteUser);
+export default withRouter(RouterDashboard);

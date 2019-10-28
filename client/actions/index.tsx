@@ -36,14 +36,12 @@ export interface SliderBarHide {
 export type SliderBarAction = SliderBarShow | SliderBarHide;
 
 export function sliderbarShow(): SliderBarShow {
-    console.log('SliderBarShow')
     return{
         type: constants.SLIDERBAR_SHOW
     }
 }
 
 export function sliderbarHide(): SliderBarHide {
-    console.log('SliderBarHide')
     return {
         type: constants.SLIDERBAR_HIDE
     }

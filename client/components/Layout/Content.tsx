@@ -33,7 +33,7 @@ class Content extends React.Component<Props, States>{
         const { pathname } = location
 
         return (
-            <Layout.Content style={{ padding: '0 24px' }}>
+            <Layout.Content style={{ padding: '24px', backgroundColor: "#fff" }}>
                 { this.props.children }
             </Layout.Content>
         )

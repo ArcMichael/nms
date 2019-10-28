@@ -33,20 +33,24 @@ class Breadcrumb extends React.Component<Props, States>{
         const { pathname } = location
 
         return (
-            <div style={{ backgroundColor: '#fff' }}>
+            <div style={{
+                backgroundColor: '#fff',
+                borderTop: '1px solid grey',
+                borderBottom: '1px solid grey',
+            }}>
                 <Antd.Breadcrumb style={{ margin: '16px 24px' }}>
                     <Antd.Breadcrumb.Item>
-                        <a href="">Ant Design</a>
+                        <Link to="/">Ant Design</Link>
                     </Antd.Breadcrumb.Item>
-                    <Antd.Breadcrumb.Item>
+                    {pathname.split('/').map((a, b) => {
+                        if (a == "") return
+                        return <Antd.Breadcrumb.Item key={b}>
+                            <Link to={`/${a}`}>{a}</Link>
+                        </Antd.Breadcrumb.Item>
+                    })}
+                    {/* <Antd.Breadcrumb.Item>
                         <a href="">Component</a>
-                    </Antd.Breadcrumb.Item>
-                    <Antd.Breadcrumb.Item>
-                        <a href="">General</a>
-                    </Antd.Breadcrumb.Item>
-                    <Antd.Breadcrumb.Item>
-                        <a href="">Button</a>
-                    </Antd.Breadcrumb.Item>
+                    </Antd.Breadcrumb.Item>*/}
                 </Antd.Breadcrumb>
             </div>
         )
