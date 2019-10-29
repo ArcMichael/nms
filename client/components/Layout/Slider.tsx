@@ -59,6 +59,7 @@ class Slider extends React.Component<Props, States>{
                         }
                     >
                         <Menu.Item key="1">
+                            <span>Images</span>
                             <Link to="/convert/images">Images</Link>
                         </Menu.Item>
                     </Menu.SubMenu>
