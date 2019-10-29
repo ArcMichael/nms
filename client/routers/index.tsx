@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Route, Link, withRouter, Redirect, useParams, 
 
 import RouteException from "./RouteException";
 import RouteUser from "./RouteUser";
+import RouteList from "./RouteList";
+import RouteDashboard from "./RouteDashboard";
+import RouteConvert from "./RouteConvert";
 
 import "./routers.scss";
 
@@ -27,8 +30,14 @@ class Routes extends React.Component<Props, States>{
     render() {
         return (
             <Switch>
-                <Route exact path="/" >
+                {/* <Route exact path="/" >
                     <Home />
+                </Route> */}
+                <Route path="/dashboard">
+                    <RouteDashboard />
+                </Route>
+                <Route path="/convert">
+                    <RouteConvert />
                 </Route>
                 <Route path="/user">
                     <RouteUser />
@@ -36,7 +45,10 @@ class Routes extends React.Component<Props, States>{
                 <Route path="/exception">
                     <RouteException />
                 </Route>
-                <Redirect from="*" to="/"></Redirect>
+                <Route path="/list">
+                    <RouteList />
+                </Route>
+                <Redirect from="*" to="/dashboard"></Redirect>
             </Switch>
         )
     }

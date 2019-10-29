@@ -12,7 +12,7 @@ config.devServer = {
         'Provess-Env': 'develop'
     },
     historyApiFallback: {
-        index: './server/tpl/index.html'
+        index: './server/tpl/development.html'
     },
     // open: true
 };

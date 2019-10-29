@@ -2,72 +2,67 @@ import * as React from "react";
 
 import * as actions from '../../actions/';
 import { StoreState } from "../../types";
+import { mergeProps } from "../../store/props";
 
 import { RouteComponentProps } from 'react-router';
 import { withRouter } from "react-router-dom";
 import { connect, Dispatch } from 'react-redux';
 
-import { Layout, Icon } from 'antd';
+import { Layout, Icon, Collapse } from 'antd';
 
-type PathParamsType = {
-}
+import "./Header.scss";
+
+type PathParamsType = {}
+type States = {}
 
 // Your component own properties
 type Props = RouteComponentProps<PathParamsType> & {
-    layoutSliderHide?: () => void;
-    layoutSliderShow?: () => void;
+    sliderBar?: boolean;
+    enthusiasmLevel?: number;
+    sliderbarShow?: () => void;
+    sliderbarHide?: () => void;
 }
 
-export function mapStateToProps({ layout }: StoreState){
+export function mapStateToProps({ layout: { sliderBar } }: StoreState) {
     return {
-        layout
+        sliderBar
     }
 }
 
-export function mapDispatchToProps(dispatch: Dispatch<actions.LayoutSliderAction>) {
+export function mapDispatchToProps(dispatch: Dispatch<actions.SliderBarAction>) {
     return {
-        onlayoutSliderHide: () => dispatch(actions.layoutSliderHide()),
-        onlayoutSliderShow: () => dispatch(actions.layoutSliderShow()),
+        sliderbarShow: () => dispatch(actions.sliderbarShow()),
+        sliderbarHide: () => dispatch(actions.sliderbarHide()),
     }
 }
 
-export function mergeProps(stateProps: Object, dispatchProps: Object, ownProps: Object) {
-    return Object.assign({}, ownProps, stateProps, dispatchProps)
-}
-
-class Header extends React.Component<Props, {}>{
+class Header extends React.Component<Props, States>{
 
     constructor(props: Props) {
         super(props);
-        // this.toggle = this.toggle.bind(this);
-    }
-
-    componentDidMount() {
-        // this.props.onlayoutSliderHide();
-    }
-
-    state = {
-        collapsed: false
     }
 
     toggle = () => {
-        console.log(this.props)
-        // let { layout: { slider }, layoutSliderShow } = this.props;
+        const { sliderbarShow, sliderbarHide, sliderBar } = this.props;
+        if( sliderBar === false ){
+            return sliderbarShow && sliderbarShow();
+        }
+        if( sliderBar === true ){
+            return sliderbarHide && sliderbarHide();
+        }
+
     }
 
     render() {
 
-        const { location } = this.props;
-        const { pathname } = location
-
-        console.log(this.props)
+        const { sliderBar } = this.props;
 
         return (
             <Layout.Header style={{ background: '#fff', padding: 0 }}>
                 <Icon
                     className="trigger"
-                    type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-                    onClick={ this.toggle }
+                    type={ sliderBar ? 'menu-unfold' : 'menu-fold'}
+                    onClick={this.toggle }
                 />
             </Layout.Header>
         )
