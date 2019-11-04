@@ -15,7 +15,9 @@ config.devServer = {
         index: './server/tpl/development.html'
     },
     // open: true
+
 };
+
 config.plugins.push(new webpack.HotModuleReplacementPlugin());
 // config.externals.push(nodeExternals())
 module.exports = config;

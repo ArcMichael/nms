@@ -5,6 +5,13 @@ module.exports = {
         path: __dirname + "../dist"
     },
 
+    optimization: {
+        splitChunks: {
+            chunks: "async", //  async
+            minSize: 400,
+        }
+    },
+
     devtool: "source-map",
 
     resolve: {
@@ -25,4 +32,5 @@ module.exports = {
     externals: [
 
     ],
+
 };
